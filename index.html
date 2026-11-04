@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#080d1b">
+<title>Flyerss Signal</title>
+<style>
+:root{--bg:#080d1b;--panel:#10182b;--panel2:#0d1426;--line:#20334a;--green:#42e6b4;--cyan:#39d7f3;--purple:#9b82ff;--red:#ff6688;--muted:#8794ad;--white:#edf3ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#17243a 0,#080d1b 43%);color:var(--white);font-family:Arial, sans-serif;padding:16px 15px 90px}
+header{display:flex;align-items:center;justify-content:space-between;margin:5px 0 18px;gap:8px}
+.logo{font-weight:900;font-size:22px;letter-spacing:.5px}.logo span{color:var(--cyan)}
+.pill{border:1px solid #51458a;background:#171632;color:#b8a9ff;padding:10px 13px;border-radius:22px;font-size:12px;font-weight:bold}
+.live{border:1px solid #27765f;color:var(--green);background:#0c2425;padding:10px 12px;border-radius:13px;font-weight:bold;font-size:12px}
+.card{background:linear-gradient(145deg,#101a2b,#0d1222);border:1px solid var(--line);border-radius:20px;padding:17px;margin:12px 0;box-shadow:0 10px 28px #0003}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.symbol{font-size:15px;color:#b8c4d9;font-weight:bold;letter-spacing:1px}
+.signal{font-size:15px;font-weight:900;color:var(--green);border:1px solid #286b5b;border-radius:12px;padding:10px 13px;background:#0d2527}
+.running{display:flex;align-items:center;gap:18px;background:#0b1c22;border:1px solid #245e59;border-radius:15px;padding:15px 17px;margin:17px 0}
+.running small{color:var(--muted);letter-spacing:2px}.running strong{font-size:27px;color:var(--green)}
+.reason{border-left:4px solid var(--purple);background:#11162b;padding:14px 15px;border-radius:0 14px 14px 0;margin:15px 0}
+.eyebrow{font-size:11px;letter-spacing:2px;color:#a99bff;font-weight:bold;margin-bottom:9px}
+.reason b{font-size:17px}.reason ul{padding-left:20px;color:#aab5cb;line-height:1.8;margin-bottom:0}
+.entry{border:1px solid #286176;border-radius:18px;padding:17px;text-align:center;margin:15px 0;background:#0e1a2a}
+.entry .eyebrow{color:var(--cyan)}.entry strong{font-size:38px;color:var(--cyan);letter-spacing:1px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.metric{background:#11182b;border:1px solid #27344d;border-radius:17px;padding:14px 8px;text-align:center}
+.metric small{display:block;color:var(--muted);letter-spacing:1.5px;font-weight:bold;margin-bottom:10px}
+.metric strong{font-size:24px}.loss{color:var(--red)}.profit{color:#e8efff}
+.sent{color:var(--muted);font-size:12px;margin-top:18px}
+.section-title{font-size:17px;font-weight:900;letter-spacing:.5px;margin:20px 2px 12px}
+.screenrow{display:grid;grid-template-columns:40px 1fr 12px;gap:8px;align-items:center;padding:8px 2px;font-weight:bold}
+.up{color:var(--green)}.down{color:#ff806f}.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px currentColor}.dot.red{background:#ff806f}
+.pricebox{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.price{font-size:29px;font-weight:900;color:var(--cyan);margin-top:7px}
+.sub{font-size:11px;color:var(--muted);margin-top:5px}
+.chart{width:100%;height:125px;display:block;margin-top:12px}
+.tabs{position:fixed;bottom:0;left:0;right:0;background:#101a2a;border-top:1px solid #26364b;display:flex;justify-content:space-around;padding:10px 3px 17px;z-index:4}
+.tab{font-size:10px;color:#8491a8;text-align:center;min-width:0;flex:1}.tab .ico{font-size:20px;display:block;margin-bottom:5px}.tab.active{color:var(--green)}
+.note{font-size:10px;color:#7e8ba2;line-height:1.5;margin:14px 3px}
+button{font:inherit}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">FLYERSS <span>SIGNAL</span></div>
+ <div class="pill">📈 ANALYSIS</div>
+ <div class="live">● LIVE DATA</div>
+</header>
+
+<div class="card">
+ <div class="topline"><div class="symbol">XAUUSD <span style="color:#71809b">/ GOLD</span></div><div class="signal" id="direction">● BUY</div></div>
+ <div class="running"><small>RUNNING<br>SIMULATION</small><strong id="running">+11 pip</strong></div>
+ <div class="reason">
+  <div class="eyebrow">SIGNAL REASON</div>
+  <b id="reasonTitle">Demo bullish setup</b>
+  <ul><li>Momentum: <span id="momentum">Positive</span></li><li>Market structure: <span id="structure">Review required</span></li><li>Multi-timeframe: <span id="screenState">Mixed</span></li></ul>
+ </div>
+ <div class="entry"><div class="eyebrow">REFERENCE PRICE</div><strong id="entry">4,026.69</strong></div>
+ <div class="grid">
+  <div class="metric"><small>RISK LEVEL</small><strong class="loss" id="sl">HIGH</strong></div>
+  <div class="metric"><small>REFERENCE TP 1</small><strong class="profit" id="tp1">4,029.69</strong></div>
+  <div class="metric"><small>REFERENCE TP 2</small><strong class="profit" id="tp2">4,032.69</strong></div>
+  <div class="metric"><small>REFERENCE TP 3</small><strong class="profit" id="tp3">4,038.69</strong></div>
+ </div>
+ <div class="sent">◷ UPDATED: <span id="updated">Waiting for price feed…</span></div>
+</div>
+
+<div class="card">
+ <div class="pricebox"><div><div class="symbol">XAUUSD SPOT PRICE</div><div class="price" id="spot">Loading…</div><div class="sub" id="source">Connecting to Flyerss API</div></div><div class="live">● <span id="connection">CONNECTING</span></div></div>
+ <canvas id="chart" class="chart"></canvas>
+</div>
+
+<div class="section-title">🏅 XAUUSD SCREENER</div>
+<div class="card">
+ <div class="topline"><b>TIMEFRAME</b><b id="overall" class="down">MIXED</b></div>
+ <div class="screenrow"><span>M1</span><span class="up">TREND UP</span><i class="dot"></i></div>
+ <div class="screenrow"><span>M5</span><span class="down">TREND DOWN</span><i class="dot red"></i></div>
+ <div class="screenrow"><span>M15</span><span class="down">TREND DOWN</span><i class="dot red"></i></div>
+</div>
+
+<div class="section-title">📊 MARKET ANALYSIS</div>
+<div class="card">
+ <div class="topline"><b>MARKET CONDITIONS</b><span class="pill">EDUCATIONAL</span></div>
+ <p style="color:#aab5cb;font-size:13px;line-height:1.7">Use this panel to review trend alignment, volatility and support/resistance. A mixed timeframe reading means the market direction is not confirmed.</p>
+ <div class="grid">
+  <div class="metric"><small>TREND ALIGNMENT</small><strong style="font-size:17px">MIXED</strong></div>
+  <div class="metric"><small>VOLATILITY</small><strong style="font-size:17px">—</strong></div>
+ </div>
+</div>
+<p class="note">Educational demo only. This app does not execute trades, provide guaranteed predictions, or replace independent financial advice. TP/SL-style figures are illustrative placeholders, not live trade instructions.</p>
+
+<nav class="tabs">
+ <div class="tab active"><span class="ico">⌁</span>Signal</div>
+ <div class="tab"><span class="ico">▥</span>Stat</div>
+ <div class="tab"><span class="ico">▤</span>Analysis</div>
+ <div class="tab"><span class="ico">▦</span>Screener</div>
+ <div class="tab"><span class="ico">♢</span>AI News</div>
+ <div class="tab"><span class="ico">•••</span>More</div>
+</nav>
+<script>
+const API='https://flyerss-signal-api.prohunterkhil08.workers.dev/price';
+const fmt=n=>Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+async function refresh(){
+ try{
+  const r=await fetch(API,{cache:'no-store'});
+  if(!r.ok) throw new Error('HTTP '+r.status);
+  const d=await r.json();
+  const p=Number(d.price ?? d.xau?.price);
+  if(!Number.isFinite(p)) throw new Error('Price field missing');
+  document.getElementById('spot').textContent=fmt(p);
+  document.getElementById('connection').textContent=d.stale?'STALE':'CONNECTED';
+  document.getElementById('source').textContent='Source: '+(d.source||'API')+' · '+(d.dataStatus||'price received');
+  document.getElementById('updated').textContent=new Date().toLocaleString();
+  drawChart(p);
+ }catch(e){
+  document.getElementById('connection').textContent='OFFLINE';
+  document.getElementById('source').textContent='Price feed unavailable · '+e.message;
+  document.getElementById('updated').textContent='Last checked '+new Date().toLocaleTimeString();
+ }
+}
+function drawChart(price){
+ const c=document.getElementById('chart'),ctx=c.getContext('2d'),w=c.clientWidth,h=c.clientHeight;
+ c.width=w*devicePixelRatio;c.height=h*devicePixelRatio;ctx.scale(devicePixelRatio,devicePixelRatio);
+ ctx.clearRect(0,0,w,h);ctx.strokeStyle='#22334a';ctx.lineWidth=1;
+ for(let y=20;y<h;y+=32){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
+ const pts=[];for(let i=0;i<45;i++){let v= h*.55+Math.sin(i*.55)*13+Math.cos(i*.21)*9+(Math.random()-.5)*13;pts.push(v)}
+ ctx.beginPath();pts.forEach((y,i)=>i?ctx.lineTo(i*w/44,y):ctx.moveTo(0,y));ctx.strokeStyle='#39d7f3';ctx.lineWidth=2;ctx.stroke();
+ ctx.fillStyle='#42e6b4';ctx.font='11px Arial';ctx.fillText('Illustrative movement · '+fmt(price),4,12);
+}
+refresh();setInterval(refresh,30000);
+window.addEventListener('resize',()=>{const p=parseFloat(document.getElementById('spot').textContent.replace(/,/g,''));if(Number.isFinite(p))drawChart(p)});
+</script>
+</body>
+</html>
